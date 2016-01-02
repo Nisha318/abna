@@ -1,0 +1,31 @@
+I had a request that someone wanted to alias their friends' hostnames with 
+their names. Replace the following on the stats.cgi file.
+
+REPLACE:
+
+	print "<tr><th colspan=\"2\">Last 20 Accesses</th></tr>\n";
+	foreach my $host (@hosts) {
+		print "<tr><td colspan=\"2\">$host</td></tr>\n";
+	}
+
+
+WITH:
+
+my %friends = (
+	'pool-162-83-247-237.ny5030.east.verizon.net' => 'Gilligan',
+	'host239-141.pool80181.interbusiness.it' => 'Skipper',
+	'modemcable059.21-131-66.nowhere.mc.videotron.ca' => 'Ginger',
+	'wjhs-198.209.106.37.columbia.k12.mo.us' => 'Professor',
+	'natclient30.coppermountain.com' => 'Thurston',
+	'proxy4.newnanutilities.org' => 'Lovey',
+	'x195060-3.shuis-s.tudelft.nl' => 'Mary Ann'
+	);
+
+	print "<tr><th colspan=\"2\">Last 20 Accesses</th></tr>\n";
+	foreach my $host (@hosts) {
+		if ($friends{$host}) {
+			print "<tr><td colspan=\"2\"><strong>$friends{$host}</strong> [$host]</td></tr>\n";
+		} else {
+			print "<tr><td colspan=\"2\">$host</td></tr>\n";
+		}
+	}

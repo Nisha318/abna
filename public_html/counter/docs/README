@@ -1,0 +1,70 @@
+BS Counter V2.0
+---------------
+
+Currently there are two versions of the counter:
+
+count.cgi    - Counter which will generate the number of hits either as
+               a text string or a series of images, uses Server Side 
+               Includes (SSI).
+
+gd-count.cgi - Counter which will generate the number of hits by creating 
+               a png image (requries the GD library).
+
+:: System Requirements ::
+
+GD.pm (if using gd-count.cgi only)
+
+:: Installation ::
+
+Firstly, you will need to configure the variables in the 
+setup.cgi, stats.cgi and the count.cgi or gd-count.cgi. To do this, open 
+each up in a text editor and configure the variables to match your 
+hosting environment. Instructions for what each variable does are 
+commented inine.
+
+Once, you are finished configuring the variables, you will also need to 
+make the Perl/CGI files executable, and the data directory writable to the 
+webserver.
+
+To set the correct permissions, run the below commands from the shell 
+(telnet/ssh) or from ftp.
+
+chmod 755 setup.cgi
+chmod 755 stats.cgi
+chmod 755 count.cgi
+chmod 755 gd-count.cgi
+chmod 777 data
+
+:: Extra Scripts ::
+
+The update.pl script converts hit files from the older version of the 
+BS Counter to the new version.
+
+The weed.pl script cleans out entires for country, search terms, 
+and referrers in the data file. To increase performance, it is not a bad 
+idea to run this once a month (or more often for larger sites) either via 
+the command line or installed in the crontab. The script takes the 20th 
+highest item's hit number and "weeds" out anything that is not at least 
+50% of it.
+
+If the counter is not recognising your browser/operating system, visit
+the debug.cgi script with your web browser and report your browser and 
+operating system names, versions and the output to brian@stanback.net.
+
+:: Using the counter ::
+
+Go to http://www.yourdomain.com/pathtocounter/setup.cgi
+This will automatically generate the html code you need to insert into 
+your website to display the counter.
+
+Also, If you want more styles of digits for the graphical counter, be sure to
+visit http://www.digitmania.holowww.com/. - Images will need to be converted into PNG 
+format and all be of the same dimensions for the gd-count.cgi script.
+
+This script is not guranteed, so please backup your data files on a regular basis, 
+especially when upgrading versions.
+
+:: Feedback ::
+
+PLEASE send feature requests, optimizations/improvements, or bug reports 
+to brian@stanback.net

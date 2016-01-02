@@ -1,0 +1,49 @@
+Changes in version 2.0.2
+------------------------
+- Created password protection option for customer (available on request)
+- Added new FAQ entries
+- Some minor changes I can't remember
+
+Changes in version 2.0.1
+------------------------
+- Implemented display last 20 accesses in stats.
+- Improved reload handling to check last 20 hostnames.
+- Added option to display leading zeros (contributed by Tamer Shenouda <tshenouda@videotron.ca>)
+- Added two digit styles, small_black and small_white
+- Modified PHP include code to be compatible with PHP's safe_mode turned on
+- Fixed flock handling (counter reset issue fixed)
+- Added definitions for several new browsers and operating systems
+- Fixed handling of unresolvable IP addresses
+- Added counter-specific option to count or block reloads (contributed by Keith Burzinski <www.kbx81.net>)
+
+Changes in version 2
+--------------------
+
+- Most of the code has been redone
+	+ Submit bugs, optimizations, improvements to brian@stanback.net
+- Separated counter code from the stats code (count.cgi does count, stats.cgi does stats)
+- New format for storing data (XML)
+	+ If you want to retain your previous stats, use the update.pl script to convert an old format data file to the new format
+	+ Created weed.pl file to periodically clean out the xml file (view README)
+	+ The new format is also easier to edit, and allows one to change the total hits without skewing the stats
+- Added templates for the stats and setup pages
+- Changed last 20 referrers to top 20
+- Added prelimenary search engine terms support
+	+ The script should be albe to get the  search terms from altavista, alltheweb, teoma, google, hotbot, lycos, mixcat, yahoo, and probably others
+- New setup.cgi script
+	+ This simply aides in generating the SSI or IMG tag code to place in a user's html document
+- No option of formatting the text-based counter
+	+ Changing font size, weight, and face can all be done in the user's html and shouldn't be part of the counter
+- New query string varible names
+	+ file= has changed to name=
+	+ type=g has changed to type=image (for image counter) (for text counter, just drop the type=) 
+- Changed the way the script parses config variables sent via the query string
+	+ For security reasons, only letters, numbers, underscores, and dashes will not be stripped from query string variable values
+- Fixed the file locking (flock)
+- Added new top-level domains
+	+ Counter also only shows the top 20 countries
+- Redid browser/os detection
+	+ Send additions to brian@stanback.net
+- Optional digit size arguments can be added to the query string for the GD counter
+	+ By specifying x=digitxpixels and y=digitypixels on the query string, the script doesn't have to waste time opening the dim file, located in each digit directory, to get the proper dimensions
+- Added option to block hits from the counter owner

@@ -1,0 +1,45 @@
+Frequently Asked Questions
+--------------------------
+
+Q: How do I manually change the number of hits?
+A: Once you have included the counter on your page, a file named
+   pagename.xml will be created in the data directory. Simply edit 
+   this file with a text editor and change the number located inside 
+   the <total> and </total>
+
+Q: Why is the script is not working or not working correctly?
+A: If you are using this script in a Microsoft Windows server environment, 
+   please ensure all the paths in the configurable variables are full 
+   system paths, eg. c:\. Also be sure you are using double-backslashes, 
+   eg. \\ instead of forward slashes.
+
+Q: Why am I getting errors about flock?
+A: If you are not running this script in a Unix/Linux environent,
+   you will sometimes need to comment out (put a # in front of the line) the 
+   file locking subroutines...
+
+   use Fcntl ':flock';
+   flock(XML, LOCK_UN);
+   flock(XML, LOCK_EX);
+
+
+Q: Why aren't the referrer stats or search terms showing up?
+A: Either you haven't had any referrs or, if you are using the GD 
+   version of the counter, the stats will not show up.
+
+Q: The counter showing up on my page or i am getting an error?
+A: If you are using the SSI version, most hosting providers will 
+   requre you to rename the page from name.html or name.htm to
+   name.shtml. If you are getting an error, check the virtual path 
+   on the <!--#exec vitual= bit.
+
+Q: How can make the counter invisible?
+A: If you are using the GD version of the counter, you can set the 
+   width and height in the image tag to 1. If you are using the SSI 
+   version of the counter, you can place an html comment around it..
+   <!-- <!--#exec virtual=""--> -->
+
+Q: Why aren't any of the images showing up?
+A: Some hosting providers do not allow anything but cgi scripts in 
+   the cgi-bin directory, try putting the .cgi files and data 
+   directory in the cgi bin, and moving the images elsewhere.
